@@ -11,7 +11,7 @@ import Utils from './services/Utils.js'
 const routes = {
     '/'                 : Home,
     '/interviews'       : Interviews,
-    '/interview/:id'    : InterviewShow
+    '/interviews/:id'    : InterviewShow
 };
 
 const router = async() => {

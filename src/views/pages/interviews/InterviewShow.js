@@ -9,10 +9,10 @@ let getInterview = async (id) => {
     };
     
     try {
-        const response = await fetch('https://5bb634f6695f8d001496c082.mockapi.io/api/posts/' + id, options)
+        const response = await fetch('http://localhost:3000/api/v1/interviews/' + id, options)
 
         const json = await response.json();
-        return json
+        return json["data"]
     } catch (err) {
         console.log('Error Getting Interview Schedules', err)
     }
@@ -23,7 +23,7 @@ let InterviewShow = {
         let request = Utils.parseRequestURL()
         let interview = await getInterview(request.id)
 
-        retur /*html*/`
+        return /*html*/`
             <strong>Interview Details</strong>
             <p>Date: ${interview.interview_date}</p>
             <p>Start Time: ${interview.start_time}</p>
