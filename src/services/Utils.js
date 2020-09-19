@@ -13,6 +13,12 @@ const Utils = {
         request.id = r[2]
         request.verb = r[3]
 
+        if (isNaN(request.id)) {
+            request.verb = r[2];
+            request.id = null
+        }
+
+
         return request
     },
 

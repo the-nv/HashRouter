@@ -5,13 +5,17 @@ import Home from './views/pages/Home.js'
 import Error404 from './views/pages/Error404.js'
 import InterviewShow from './views/pages/interviews/InterviewShow.js'
 import Interviews from './views/pages/interviews/Interviews.js'
+import InterviewCreate from './views/pages/interviews/InterviewCreate.js'
+import InterviewUpdate from './views/pages/interviews/InterviewUpdate.js'
 
 import Utils from './services/Utils.js'
 
 const routes = {
-    '/'                 : Home,
-    '/interviews'       : Interviews,
-    '/interviews/:id'    : InterviewShow
+    '/'                     : Home,
+    '/interviews'           : Interviews,
+    '/interviews/new'       : InterviewCreate,
+    '/interviews/:id'       : InterviewShow,
+    '/interviews/:id/edit'  : InterviewUpdate
 };
 
 const router = async() => {

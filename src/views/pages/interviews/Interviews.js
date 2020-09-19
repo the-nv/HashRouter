@@ -12,7 +12,8 @@ let getInterviews = async () => {
         const response = await fetch('http://localhost:3000/api/v1/interviews', options)
 
         const json = await response.json();
-        return json["data"]
+        console.log(json["interviews"])
+        return json["interviews"]
     } catch (err) {
         console.log('Error Getting Interview Schedules', err)
     }
@@ -21,6 +22,7 @@ let getInterviews = async () => {
 let Interviews = {
     render : async () => {
         let interviews = await getInterviews()
+        console.log("third")
 
         let view =  /*html*/`
             <table>
@@ -29,7 +31,9 @@ let Interviews = {
                     <th>Date</th>
                     <th>Start Time</th>
                     <th>End Time</th>
-                    <th colspan="1"></th>
+                    <th colspan = "2">Interviewer Details</th>
+                    <th colspan = "2">Candidate Details</th>
+                    <th colspan="2"></th>
                 </tr>
 
                 ${interviews.map(interview => 
@@ -38,7 +42,12 @@ let Interviews = {
                         <td>${interview["interview_date"]}</td>
                         <td>${interview["start_time"]}</td>
                         <td>${interview["end_time"]}</td>
+                        <td>${interview["interviewer"]["name"]}</td>
+                        <td>${interview["interviewer"]["email"]}</td>
+                        <td>${interview["candidate"]["name"]}</td>
+                        <td>${interview["candidate"]["email"]}</td>
                         <td><a href = "#/interviews/${interview.id}">show</a></td>
+                        <td><a href = "#/interviews/${interview.id}/edit">edit</a></td>
                     </tr>`
                     )}
             </table>
